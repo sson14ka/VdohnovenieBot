@@ -107,8 +107,6 @@ class SportsmenBase(Base):
     team = relationship('team', back_populates="sportsmen")
 
 
-
-
 class TimetableBase(Base):
     __tablename__ = "timetable"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -123,6 +121,7 @@ class TimetableBase(Base):
 
     tariff = relationship("tariff", back_populates="timetable")
 
+
 class TrialLesonBase(Base):
     __tablename__ = "trial_lessons"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -135,7 +134,3 @@ class TrialLesonBase(Base):
     department_id: Mapped[int]= mapped_column(ForeignKey("department.id"))
 
     department = relationship("department", back_populates="triallesson")
-
-
-
-
