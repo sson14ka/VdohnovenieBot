@@ -1,3 +1,7 @@
+'''
+Основная цель: Загрузка настроек конфигурации для бота и других переменных окружения.
+'''
+
 import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 

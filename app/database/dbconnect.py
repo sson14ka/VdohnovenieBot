@@ -1,3 +1,7 @@
+'''
+Основная цель: Настройка и управление подключением к базе данных с использованием асинхронных операций.
+'''
+
 from sqlalchemy import func
 from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase

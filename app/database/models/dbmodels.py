@@ -1,3 +1,8 @@
+'''
+Основная цель:
+Описание структур базы данных для различных сущностей приложения, таких как тренеры, спортсмены, департаменты, тарифы и расписания.
+'''
+
 import datetime
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column, relationship

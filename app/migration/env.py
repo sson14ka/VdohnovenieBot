@@ -10,7 +10,7 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 from app.database.dbconnect import database_url, Base
-from app.api.dbmodels import StatuseBase, AutorizBase, DepartmentBase, CoachBase, TariffBase, TeamBase, SportsmenBase, TimetableBase, TrialLesonBase
+from app.database.models.dbmodels import StatuseBase, AutorizBase, DepartmentBase, CoachBase, TariffBase, TeamBase, SportsmenBase, TimetableBase, TrialLesonBase
 
 config = context.config
 config.set_main_option("sqlalchemy.url", database_url)

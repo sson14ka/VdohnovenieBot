@@ -2,7 +2,7 @@ from aiogram import Router, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 from app.api.dao import UserDAO
-from app.keyboards.kbs import app_keyboard
+from archive.app.keyboards.kbs import app_keyboard
 from app.bot.utils.utils import greet_user, get_about_us_text
 
 user_router = Router()

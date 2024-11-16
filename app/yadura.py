@@ -1,18 +1,33 @@
 import sqlalchemy as db
-from sqlalchemy import func
-from dbmodels import Base, StatuseBase, AutorizBase, DepartmentBase, CoachBase, TariffBase, TeamBase, SportsmenBase, TimetableBase, TrialLesonBase
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine, AsyncSession
+from dbmodels import Base, StatuseBase, AutorizBase, DepartmentBase, CoachBase, TariffBase, TeamBase, SportsmenBase, TimetableBase, TrialLesonBase
 
+# URL для подключения к базе данных MySQL
 database_url = 'mysql+aiomysql://root:password@localhost/sportsclub'
-engine = db.create_as
 
-Session = sessionmaker(engine)
+# Создание асинхронного движка
+engine = create_async_engine(database_url, echo=True)
 
-with Session() as session:
-    pass
+# Создание асинхронного sessionmaker
+AsyncSessionMaker = sessionmaker(
+    engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
+)
 
-def create_db_and_tables():
-    Base.metadata.create_all(engine)
+# Функция для создания базы данных и таблиц
+async def create_db_and_tables():
+    # Асинхронно создаем все таблицы, указанные в Base.metadata
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
-create_db_and_tables()
+# Пример использования сессии
+async def run_session():
+    async with AsyncSessionMaker() as session:
+        # Пример запросов или работы с сессией
+        pass
+
+# Запуск создания таблиц
+import asyncio
+asyncio.run(create_db_and_tables())
